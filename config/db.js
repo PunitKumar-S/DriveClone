@@ -1,3 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('http://localhost:2714/drive');
+function connectToDB(){
+    mongoose.connect(process.env.MONGO_URI).then(()=>{
+        console.log('Connected to DB')
+    }).catch((error)=>{
+        console.log(error);
+    })
+}
+
+module.exports = connectToDB;
